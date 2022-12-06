@@ -1,0 +1,139 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --cell-size: 150px;
+    --mark-size: calc(var(--cell-size) * .9);
+  }
+  
+  body {
+    background-color: lightskyblue;
+  }
+  
+  .board {
+    width: 100vw;
+    height: 70vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+    
+    
+  }
+  
+  .cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 6px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .cell:first-child,
+  .cell:nth-child(2),
+  .cell:nth-child(3) {
+    border-top: none;
+  }
+  
+  .cell:nth-child(3n + 1) {
+    border-left: none;
+  }
+  
+  .cell:nth-child(3n + 3) {
+    border-right: none;
+  }
+  
+  .cell:last-child,
+  .cell:nth-child(8),
+  .cell:nth-child(7) {
+    border-bottom: none;
+  }
+  
+  .cell.x,
+  .cell.circle {
+    cursor: not-allowed;
+  }
+  
+  .cell.x::before,
+  .cell.x::after,
+  .cell.circle::before {
+    background-color: black;
+  }
+  
+  
+
+/* X */
+.board.x .cell:not(.circle):not(.x):hover {
+	background-image: url("x.gif");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.cell:not(.circle).x {
+	background-image: url("x.gif");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	
+}
+
+/*O */
+.board.circle .cell:not(.circle):not(.x):hover {
+	background-image: url("o.gif");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	
+}
+.cell:not(.x).circle {
+	background-image: url("o.gif");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+  .winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(202, 217, 136);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+  }
+  
+  .winning-message button {
+    font-size: 3rem;
+    background-color: rgb(173, 87, 87);
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+  }
+  
+  .winning-message button:hover {
+    background-color: black;
+    color: rgb(159, 74, 74);
+    border-color: white;
+  }
+  
+  .winning-message.show {
+    display: flex;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-size: 3.6rem;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: var(--display-spacing);
+    margin-bottom: 2rem;
+    text-decoration: underline;
+    text-shadow: 0px 0px 30px rgba(104, 146, 197), 0px 0px 20px rgb(242, 243, 242), 0px 0px 3px rgb(234, 1, 1);
+  }
