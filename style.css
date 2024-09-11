@@ -1,0 +1,153 @@
+/* This script style for the Tic Tac Toe game, including board layout, cell styling, marks, and winning message */
+
+/* Apply box-sizing border-box to all elements, including pseudo-elements for consistent sizing */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* Define CSS variables for cell and mark sizes */
+:root {
+  --cell-size: 150px; /* Size of each cell */
+  --mark-size: calc(var(--cell-size) * .9); /* Size of X and O marks */
+}
+
+/* General body styling */
+body {
+  background-color: lightskyblue; 
+}
+
+/* Styling for the game board */
+.board {
+  width: 100vw; /* Full viewport width */
+  height: 70vh; /* 70% of viewport height */
+  display: grid; /* Use grid layout for the board */
+  justify-content: center; /* Center board horizontally */
+  align-content: center; /* Center board vertically */
+  justify-items: center; /* Center cells horizontally */
+  align-items: center; /* Center cells vertically */
+  grid-template-columns: repeat(3, auto); /* Create a 3x3 grid layout */
+}
+
+/* Styling for each cell */
+.cell {
+  width: var(--cell-size); /* Set cell width */
+  height: var(--cell-size); /* Set cell height */
+  border: 6px solid black; /* Black border for cells */
+  display: flex; /* Flexbox for centering content */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  position: relative; /* For absolute positioning of marks */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Remove top border for cells in the first row */
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+/* Remove left border for cells in the first column */
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+/* Remove right border for cells in the last column */
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+/* Remove bottom border for cells in the last row */
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+/* Change cursor to not-allowed for cells with marks */
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+/* Styling for X marks */
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+  background-color: black; /* Set background color for X marks */
+}
+
+/* Hover and active states for X marks */
+.board.x .cell:not(.circle):not(.x):hover {
+  background-image: url("x.gif"); /* Set background image for X on hover */
+  background-size: 100% 100%; /* Scale background image to cover cell */
+  background-repeat: no-repeat; /* Prevent repeating background image */
+}
+
+.cell:not(.circle).x {
+  background-image: url("x.gif"); /* Set background image for X marks */
+  background-size: 100% 100%; /* Scale background image to cover cell */
+  background-repeat: no-repeat; /* Prevent repeating background image */
+}
+
+/* Hover and active states for O marks */
+.board.circle .cell:not(.circle):not(.x):hover {
+  background-image: url("o.gif"); /* Set background image for O on hover */
+  background-size: 100% 100%; /* Scale background image to cover cell */
+  background-repeat: no-repeat; /* Prevent repeating background image */
+}
+
+.cell:not(.x).circle {
+  background-image: url("o.gif"); /* Set background image for O marks */
+  background-size: 100% 100%; /* Scale background image to cover cell */
+  background-repeat: no-repeat; /* Prevent repeating background image */
+}
+
+/* Styling for the winning message overlay */
+.winning-message {
+  display: none; /* Hide by default */
+  position: fixed; /* Fix position to cover the viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(202, 217, 136); /* Background color for the overlay */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  color: white; /* Text color */
+  font-size: 5rem; /* Font size for the winning message */
+  flex-direction: column; /* Stack content vertically */
+}
+
+/* Styling for the restart button */
+.winning-message button {
+  font-size: 3rem; /* Font size for button text */
+  background-color: rgb(173, 87, 87); /* Background color for button */
+  border: 1px solid black; /* Border color for button */
+  padding: .25em .5em; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Hover state for the restart button */
+.winning-message button:hover {
+  background-color: black; /* Background color on hover */
+  color: rgb(159, 74, 74); /* Text color on hover */
+  border-color: white; /* Border color on hover */
+}
+
+/* Show the winning message overlay */
+.winning-message.show {
+  display: flex; /* Display the overlay */
+}
+
+/* Styling for the page heading */
+h1 {
+  font-family: var(--display); /* Font family for the heading */
+  font-size: 3.6rem; /* Font size for the heading */
+  text-align: center; /* Center align text */
+  font-weight: 400; /* Font weight */
+  letter-spacing: var(--display-spacing); /* Letter spacing */
+  margin-bottom: 2rem; /* Margin below the heading */
+  text-decoration: underline; /* Underline text */
+  text-shadow: 0px 0px 30px rgba(104, 146, 197), 0px 0px 20px rgb(242, 243, 242), 0px 0px 3px rgb(234, 1, 1); /* Text shadow for effect */
+}

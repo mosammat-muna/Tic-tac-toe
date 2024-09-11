@@ -1,0 +1,47 @@
+<!-- This script creates Tic Tac Toe game with a board, cells, and a winning message with a restart button -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding and viewport settings for responsive design -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Link to the external CSS file for styling -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Link to the external JavaScript file for functionality, with defer to ensure it loads after the HTML -->
+  <script src="script.js" defer></script>
+
+  <!-- Page title -->
+  <title>Tic Tac Toe</title>
+</head>
+<body>
+  <!-- Main heading for the game -->
+  <h1>Tic Tac Toe</h1>
+
+  <!-- Game board container -->
+  <div class="board" id="board">
+    <!-- Individual cells of the Tic Tac Toe board, with a data attribute for JavaScript interaction -->
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+  </div>
+
+  <!-- Winning message and restart button -->
+  <div class="winning-message" id="winningMessage">
+    <!-- Placeholder for the winning message text -->
+    <div data-winning-message-text></div>
+    <!-- Button to restart the game -->
+    <button id="restartButton">Restart</button>
+  </div>
+
+</body>
+</html>
+
